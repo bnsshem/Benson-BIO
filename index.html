@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Benito: CCTV and network installer, phone and laptop repairer, driver and developer in Kenya.">
+<title>About Benito</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: single narrow column, a left label rail on wide screens, sections divided by whitespace and one rule each. */
+:root {
+  --bg: #f2f5f1;
+  --surface: #e6ece5;
+  --fg: #14201a;
+  --muted: #53625a;
+  --accent: #0b6b3a;
+  --flag: #b3261e;
+  --rule: #c5d0c6;
+  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e1612; --surface: #17231c; --fg: #e5ede7; --muted: #9aaca1;
+    --accent: #43c481; --flag: #ee7a70; --rule: #2a3a30; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e1612; --surface: #17231c; --fg: #e5ede7; --muted: #9aaca1;
+  --accent: #43c481; --flag: #ee7a70; --rule: #2a3a30; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.65;
+  padding-block: 56px 72px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 880px; margin-inline: auto; display: grid; gap: 64px; }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+header { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 32px; align-items: end; }
+.portrait { width: 168px; aspect-ratio: 3 / 4; position: relative; border-radius: 4px; overflow: hidden; background: var(--surface); }
+.portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; display: block; }
+.portrait::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 6px; background: var(--flag); }
+h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.6rem, 8vw, 4.4rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin: 8px 0 12px;
+  text-wrap: balance;
+}
+.tagline { font-size: 1.15rem; color: var(--muted); margin: 0; max-width: 36ch; }
+
+section { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 16px 32px; border-top: 1px solid var(--rule); padding-top: 24px; }
+section > .label { padding-top: 6px; }
+h2 { font-family: var(--font-display); font-size: 1.6rem; line-height: 1.2; margin: 0 0 14px; text-wrap: balance; }
+p { margin: 0 0 1em; max-width: 65ch; }
+p:last-child { margin-bottom: 0; }
+
+.roles { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
+.roles li { display: grid; grid-template-columns: minmax(0, 12rem) minmax(0, 1fr); gap: 4px 20px; padding: 14px 0; border-bottom: 1px solid var(--rule); }
+.roles li:first-child { padding-top: 0; }
+.roles li:last-child { border-bottom: 0; padding-bottom: 0; }
+.roles strong { font-family: var(--font-display); font-weight: 700; }
+.roles span { color: var(--muted); }
+
+.gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 0; padding: 0; list-style: none; }
+.gallery figure { margin: 0; display: grid; gap: 8px; }
+.gallery img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 25%; border-radius: 4px; display: block; background: var(--surface); }
+.gallery figcaption { font-family: var(--font-mono); font-size: 12.5px; color: var(--muted); }
+
+.projects { display: grid; gap: 14px; }
+.project { background: var(--surface); padding: 18px 20px; border-radius: 4px; }
+.project h3 { font-family: var(--font-display); font-size: 1.15rem; margin: 0 0 4px; }
+.project p { color: var(--muted); font-size: 0.98rem; }
+.project .label { display: block; margin-top: 10px; text-transform: none; letter-spacing: 0.02em; font-size: 12.5px; }
+
+.stack { display: grid; gap: 14px; margin: 0; }
+.stack div { display: grid; grid-template-columns: minmax(0, 8rem) minmax(0, 1fr); gap: 4px 16px; }
+.stack dt { font-family: var(--font-mono); font-size: 13px; color: var(--muted); padding-top: 3px; }
+.stack dd { margin: 0; }
+
+.outside { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 240px); gap: 24px; align-items: start; }
+.outside img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 30%; border-radius: 4px; display: block; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 16px; padding: 0; list-style: none; }
+.tags li { font-family: var(--font-mono); font-size: 13px; padding: 4px 10px; border: 1px solid var(--rule); border-radius: 999px; }
+
+.contact { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.contact li { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); gap: 12px; }
+.contact .k { font-family: var(--font-mono); font-size: 13px; color: var(--muted); padding-top: 3px; }
+.contact .v { overflow-wrap: anywhere; }
+
+footer { font-family: var(--font-mono); font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--rule); padding-top: 18px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+@media (max-width: 700px) {
+  body { padding-block: 36px 56px; font-size: 16.5px; }
+  .wrap { gap: 48px; }
+  header { grid-template-columns: 1fr; gap: 20px; align-items: start; }
+  .portrait { width: 132px; }
+  section { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+  .roles li, .stack div, .contact li { grid-template-columns: minmax(0, 1fr); }
+  .outside { grid-template-columns: minmax(0, 1fr); }
+  .outside img { max-width: 260px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="portrait"><img src="img/portrait.jpg" alt="Portrait of Benito standing beside a yellow pickup"></div>
+    <div>
+      <div class="label">Biography</div>
+      <h1>Benito</h1>
+      <p class="tagline">CCTV and network installer, phone and laptop repairer, driver and developer in Kenya.</p>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="label">About</div>
+    <div>
+      <h2>I install it, fix it, drive it and code it.</h2>
+      <p>I am Benito, based in Kenya. I install CCTV cameras and Wi-Fi networks, repair phones and laptops, and work as a driver. I have more than three years of experience in each of them.</p>
+      <p>I also build software: web systems, WhatsApp bots and automation scripts. I am currently volunteering at Vihiga Teaching and Referral Hospital.</p>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="label">What I do</div>
+    <ul class="roles">
+      <li><strong>CCTV and cameras</strong><span>Planning, mounting, cabling and setting up camera systems.</span></li>
+      <li><strong>Network and Wi-Fi</strong><span>Installing wired and wireless networks for homes, offices and institutions.</span></li>
+      <li><strong>Phone and laptop repair</strong><span>Hardware faults, software problems, resets and setup.</span></li>
+      <li><strong>Driver</strong><span>More than three years of driving experience.</span></li>
+      <li><strong>Software developer</strong><span>Web systems, bots and automation, from database to interface.</span></li>
+      <li><strong>Volunteer</strong><span>Vihiga Teaching and Referral Hospital.</span></li>
+    </ul>
+  </section>
+
+  <section id="work">
+    <div class="label">On the job</div>
+    <ul class="gallery">
+      <li><figure><img src="img/cctv1.jpg" alt="Benito on a ladder fixing trunking for a camera on a building wall" loading="lazy"><figcaption>CCTV installation</figcaption></figure></li>
+      <li><figure><img src="img/cctv2.jpg" alt="Benito on a ladder marking the wall for a camera bracket" loading="lazy"><figcaption>Camera mounting</figcaption></figure></li>
+      <li><figure><img src="img/phones.jpg" alt="Two phones showing their About phone screens beside a laptop" loading="lazy"><figcaption>Phone repair and software</figcaption></figure></li>
+      <li><figure><img src="img/laptops.jpg" alt="Stacks of HP laptops on a wooden table" loading="lazy"><figcaption>Laptop repair and setup</figcaption></figure></li>
+    </ul>
+  </section>
+
+  <section id="projects">
+    <div class="label">Software projects</div>
+    <div class="projects">
+      <article class="project">
+        <h3>High School Student Management System</h3>
+        <p>A school management system built for ETTI Girls High School to keep student records in one place.</p>
+        <span class="label">PHP · MySQL · XAMPP</span>
+      </article>
+      <article class="project">
+        <h3>Samper Parcel Courier</h3>
+        <p>A parcel delivery system with separate views for customers, drivers and admins. Customers pay through M-Pesa before pickup.</p>
+        <span class="label">PHP · MySQL · M-Pesa Daraja API</span>
+      </article>
+      <article class="project">
+        <h3>Hospital Management System</h3>
+        <p>A management system for hospital records and daily operations.</p>
+        <span class="label">Web application</span>
+      </article>
+    </div>
+  </section>
+
+  <section id="stack">
+    <div class="label">Tools I use</div>
+    <dl class="stack">
+      <div><dt>Languages</dt><dd>PHP, Python, JavaScript, SQL</dd></div>
+      <div><dt>Backend</dt><dd>MySQL, Flask, Node.js, XAMPP for local development</dd></div>
+      <div><dt>Automation</dt><dd>WhatsApp bots with Baileys, ffmpeg for audio and video, Claude API</dd></div>
+      <div><dt>Payments</dt><dd>M-Pesa Daraja API</dd></div>
+    </dl>
+  </section>
+
+  <section id="outside">
+    <div class="label">Outside work</div>
+    <div class="outside">
+      <div>
+        <ul class="tags">
+          <li>Road trips</li>
+          <li>Football</li>
+          <li>Video games</li>
+        </ul>
+        <p>When I am not on a job, I am usually on the road, watching or playing football, or gaming.</p>
+      </div>
+      <img src="img/roadside.jpg" alt="Benito pulling up his hoodie in front of a yellow pickup" loading="lazy">
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="label">Contact</div>
+    <div>
+      <h2>Need cameras, Wi-Fi or a repair?</h2>
+      <ul class="contact">
+        <li><span class="k">Email</span><span class="v">bnssharif@gmail.com</span></li>
+        <li><span class="k">Phone</span><span class="v">+254 743 643 222</span></li>
+        <li><span class="k">WhatsApp</span><span class="v"><a href="https://wa.me/254743643222" rel="noopener">+254 743 643 222</a></span></li>
+        <li><span class="k">Location</span><span class="v">Kenya</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <span>Benito</span>
+    <span>Kenya</span>
+  </footer>
+</div>
+</body>
+</html>
